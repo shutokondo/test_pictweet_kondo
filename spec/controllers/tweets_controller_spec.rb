@@ -10,15 +10,13 @@ describe TweetsController do
     end
 
     it "renders the :index template" do
-      tweet = create(:tweet)
-      get :index, id: tweet
+      get :index
       expect(response).to render_template :index
     end
   end
 
   describe 'GET #new' do
     it "renders the :new template" do
-      tweet = create(:tweet)
       get :new
       expect(response).to render_template :new
     end
@@ -33,8 +31,7 @@ describe TweetsController do
       end
 
       it "renders the :create template" do
-        tweet = create(:tweet)
-        post :create
+        post :create, tweet: attributes_for(:tweet)
         expect(response).to render_template :create
       end
   end
